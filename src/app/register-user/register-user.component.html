@@ -1,0 +1,55 @@
+<p>register-user works!</p>
+
+<form [formGroup]="registerForm" class="example-form" (ngSubmit)="onRegisterClick()">
+
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="first Name" formControlName="firstName">
+        
+        <mat-error *ngIf="registerForm.controls.firstName.hasError('required')">
+        Please enter your firstname
+        </mat-error>
+    
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder= "last name" formControlName="lastName">
+        
+        <mat-error *ngIf="registerForm.controls.lastName.hasError('required')">
+                Please enter lastName
+                </mat-error>
+
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder= "E-Mail" formControlName="email">
+    
+        <mat-error *ngIf="registerForm.controls.email.hasError('email')">
+                Please enter your email address
+                </mat-error>
+    
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder= "password" type = "password" formControlName="password">
+    
+        <mat-error *ngIf="registerForm.controls.password.hasError('required')">
+                Please enter your password
+                </mat-error>
+    
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder= "city" formControlName="city">
+    
+        <mat-error *ngIf="registerForm.controls.city.hasError('required')">
+                Please enter your city
+                </mat-error>
+    
+    </mat-form-field>
+
+        <button mat-raised-button color="primary">Register</button>
+
+
+</form>
+

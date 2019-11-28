@@ -3,14 +3,47 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatButtonModule} from '@angular/material/button';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { RegisterUserComponent } from './register-user/register-user.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
+
+//import {MatCardModule} from '@angular/material/card';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    LandingPageComponent,
+    PageNotFoundComponent,
+    RegisterUserComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    MatToolbarModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatButtonModule,
+    BrowserAnimationsModule,
+    HttpClientModule
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]
