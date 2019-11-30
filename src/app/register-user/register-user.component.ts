@@ -20,7 +20,6 @@ export class RegisterUserComponent implements OnInit {
       "lastName": ['', Validators.required],
       "email": ['', Validators.email],
       "password": ['', Validators.required],
-      "city": ['', Validators.required],
     })
   }
   onRegisterClick() : void {

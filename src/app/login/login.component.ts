@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, EmailValidator, Validators } from '@angular/for
 import { User } from 'src/entities/user';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { UseradminService } from '../useradmin.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,8 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   loginForm : FormGroup;
-  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) { }
+  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router,
+    private adminauth: UseradminService) { }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -34,7 +36,6 @@ export class LoginComponent implements OnInit {
         let users: User[];
         users = this.createlist(users);
         //tempslut
-        
         let userLoginAttempt = this.loginForm.value as User;
 
        
@@ -51,11 +52,24 @@ export class LoginComponent implements OnInit {
           }
         });
         
-      } else{
-        console.log("Cant. Must fix form errors first");
         
-      }
+      }  else{
+      console.log("Cant. Must fix form errors first");
+    
+    } else if(this.loginForm.value.email == 'user@gmail.dk'){
+      this.adminauth.admin().subscribe(() =>
+      this.router.navigate(['/landing-page']));
+    
+    }else {console.log("auth service");
+    this.auth.login().subscribe(result => {
+      console.log(result)
+      this.router.navigate(['landing-page']); 
+    });
+  
+   }
   }
+
+  
 
   createlist(users) : Array<User> {
   
