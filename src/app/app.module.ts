@@ -17,6 +17,8 @@ import { RegisterUserComponent } from './register-user/register-user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ViewProductsComponent } from './view-products/view-products.component';
+import {MatCardModule} from '@angular/material/card';
+import { FilterProduct } from './view-products/product.filter';
 
 
 //import {MatCardModule} from '@angular/material/card';
@@ -29,7 +31,8 @@ import { ViewProductsComponent } from './view-products/view-products.component';
     LandingPageComponent,
     PageNotFoundComponent,
     RegisterUserComponent,
-    ViewProductsComponent
+    ViewProductsComponent,
+    FilterProduct
   ],
   imports: [
     BrowserModule,
@@ -42,10 +45,9 @@ import { ViewProductsComponent } from './view-products/view-products.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatButtonModule,
+    MatCardModule,
     BrowserAnimationsModule,
     HttpClientModule
-
-
   ],
   providers: [],
   bootstrap: [AppComponent]
