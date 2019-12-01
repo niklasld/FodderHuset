@@ -16,6 +16,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ViewProductsComponent } from './view-products/view-products.component';
 
 
 //import {MatCardModule} from '@angular/material/card';
@@ -27,7 +28,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     LoginComponent,
     LandingPageComponent,
     PageNotFoundComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
+    ViewProductsComponent
   ],
   imports: [
     BrowserModule,
