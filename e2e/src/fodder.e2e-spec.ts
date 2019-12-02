@@ -1,5 +1,4 @@
-
-
+import { protractor } from 'protractor/built/ptor';
 import { browser, element, by } from "protractor";
 
 describe('Login html tests om den virker', () => {
@@ -22,7 +21,7 @@ describe('Login html tests om den virker', () => {
         expect(h2).toEqual("login works!")
         browser.sleep(1000);
         element(by.id('email-input')).sendKeys("user@gmail.dk");
-        element(by.id('password-input')).sendKeys('12345');
+        element(by.id('password-input')).sendKeys('123');
         browser.sleep(1000);
 
         element(by.id('login-botton')).click();
