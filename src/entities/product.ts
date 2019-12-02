@@ -3,6 +3,6 @@ export class product{
    Name: string;
    Price: number;
    Weight: number;
-   imgLinlk: string;
+   imgLink: string;
    AnimnalID: number;
 }

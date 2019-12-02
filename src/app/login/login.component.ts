@@ -1,3 +1,4 @@
+import { DataService } from './../data.service';
 import { ApiService } from './../api.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, EmailValidator, Validators } from '@angular/forms';
@@ -15,10 +16,9 @@ import { UseradminService } from '../useradmin.service';
 export class LoginComponent implements OnInit {
 
   loginForm : FormGroup;
-  users: User[];
 
   constructor(private fb: FormBuilder, private auth: AuthService, private router: Router,
-    private adminauth: UseradminService, private api: ApiService) { }
+    private adminauth: UseradminService, private api: ApiService, private data: DataService) { }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -27,34 +27,23 @@ export class LoginComponent implements OnInit {
 
 
     })
-    this.getUsers();
+
+    this.data.getUsers();
 
 
   }
 
-  public getUsers(){
-
-    this.api.GetAllUsers().subscribe(res => {
-      this.users = res;
-    });
-  }
 
   onLoginClick() : void {
     console.log(this.loginForm);
-      // If this form is valid - then call the serve.
-
 
       if(this.loginForm.valid) {
 
-
-
-
-        //tempslut
         let userLoginAttempt = this.loginForm.value as User;
 
 
 
-        this.users.forEach(element => {
+        this.data.users.forEach(element => {
 
 
           if(userLoginAttempt.email === element.email && userLoginAttempt.password === element.password) {
