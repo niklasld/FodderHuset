@@ -4,11 +4,13 @@ import { LoginComponent } from './login/login.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
+import { ViewProductsComponent } from './view-products/view-products.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: 'landing-page', pathMatch: 'full' },
   {path: 'landing-page', component: LandingPageComponent},
+  {path: 'view-products', component: ViewProductsComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register-user', component: RegisterUserComponent},
 { path: '**', component: PageNotFoundComponent }
