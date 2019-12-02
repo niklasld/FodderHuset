@@ -4,6 +4,4 @@ export class product{
     Animal: string;
     Price: number;
     Weight: number;
-
- 
 }
