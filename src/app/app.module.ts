@@ -33,15 +33,15 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    MatToolbarModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
     MatInputModule,
     MatFormFieldModule,
     MatDatepickerModule,
     MatNativeDateModule,
     MatButtonModule,
-    BrowserAnimationsModule,
-    HttpClientModule
+    MatToolbarModule,
 
 
   ],
