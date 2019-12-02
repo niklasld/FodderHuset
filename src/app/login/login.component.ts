@@ -50,15 +50,17 @@ export class LoginComponent implements OnInit {
             });
 
           }
-          else if(element.role === 'admin'){
+          if(element.role == 'admin'){
+            console.log("admin else if ramt")
             this.adminauth.admin().subscribe(() =>
             this.router.navigate(['/landing-page']));
           }
-          else if(this.loginForm.value.email == 'user@gmail.dk'){
-            this.adminauth.admin().subscribe(() =>
-            this.router.navigate(['/landing-page']));
+          // else if(this.loginForm.value.email == 'user@gmail.dk'){
+          //   this.adminauth.admin().subscribe(() =>
+          //   this.router.navigate(['/landing-page']));
           
-          }else {console.log("auth service");
+          // }
+          else {console.log("auth service");
           this.auth.login().subscribe(result => {
             console.log(result)
             this.router.navigate(['landing-page']); 
