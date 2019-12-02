@@ -1,3 +1,5 @@
+
+
 import { browser, element, by } from "protractor";
 
 describe('Login html tests om den virker', () => {
@@ -24,7 +26,7 @@ describe('Login html tests om den virker', () => {
         browser.sleep(1000);
 
         element(by.id('login-botton')).click();
-        browser.sleep(500);
+        browser.sleep(1000);
         element(by.id('register-user-page')).click();
         browser.sleep(1000);
         expect(true).toBeTruthy();
