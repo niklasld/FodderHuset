@@ -50,6 +50,10 @@ export class LoginComponent implements OnInit {
             });
 
           }
+          else if(element.role === 'admin'){
+            this.adminauth.admin().subscribe(() =>
+            this.router.navigate(['/landing-page']));
+          }
           else if(this.loginForm.value.email == 'user@gmail.dk'){
             this.adminauth.admin().subscribe(() =>
             this.router.navigate(['/landing-page']));
@@ -77,19 +81,22 @@ export class LoginComponent implements OnInit {
       firstName: 'peter', 
       lastName: 'pedal', 
       email: 'user@gmail.dk', 
-      password: '123'},
+      password: '123',
+      role: 'admin'},
 
       {_id: '2', 
       firstName: 'Anders', 
       lastName: 'Andersen', 
       email: 'Anders@gmail.dk', 
-      password: '1234'},
+      password: '1234',
+      role: 'user'},
 
       {_id: '3', 
       firstName: 'Thomas', 
       lastName: 'Arnoldsen', 
       email: 'ThomasA@gmail.dk', 
-      password: '12345'},
+      password: '12345',
+      role: 'user'},
 
     ];
     return users;
