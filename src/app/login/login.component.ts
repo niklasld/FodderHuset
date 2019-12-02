@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     console.log(this.loginForm);
       // If this form is valid - then call the serve.
 
-      
+
       if(this.loginForm.valid) {
         //hent api user liste
 
@@ -38,15 +38,15 @@ export class LoginComponent implements OnInit {
         //tempslut
         let userLoginAttempt = this.loginForm.value as User;
 
-       
+
         users.forEach(element => {
           if(userLoginAttempt.email === element.email && userLoginAttempt.password === element.password) {
             console.log("succesfull LOGIN!!! welcome "+ element.firstName);
-            
+
             this.auth.LoggedinUser = userLoginAttempt;
-      
+
             this.auth.login().subscribe(result => {
-              this.router.navigate(['landing-page']); 
+              this.router.navigate(['landing-page']);
             });
 
           }
@@ -57,44 +57,44 @@ export class LoginComponent implements OnInit {
           else if(this.loginForm.value.email == 'user@gmail.dk'){
             this.adminauth.admin().subscribe(() =>
             this.router.navigate(['/landing-page']));
-          
+
           }else {console.log("auth service");
           this.auth.login().subscribe(result => {
             console.log(result)
-            this.router.navigate(['landing-page']); 
+            this.router.navigate(['landing-page']);
           });
-        
+
          }
         });
         }  else{
       console.log("Cant. Must fix form errors first");
-    
-    } 
+
+    }
   }
 
-  
+
 
   createlist(users) : Array<User> {
-  
+
     users = [
-      {_id: '1', 
-      firstName: 'peter', 
-      lastName: 'pedal', 
-      email: 'user@gmail.dk', 
+      {_id: '1',
+      firstName: 'peter',
+      lastName: 'pedal',
+      email: 'user@gmail.dk',
       password: '123',
       role: 'admin'},
 
-      {_id: '2', 
-      firstName: 'Anders', 
-      lastName: 'Andersen', 
-      email: 'Anders@gmail.dk', 
+      {_id: '2',
+      firstName: 'Anders',
+      lastName: 'Andersen',
+      email: 'Anders@gmail.dk',
       password: '1234',
       role: 'user'},
 
-      {_id: '3', 
-      firstName: 'Thomas', 
-      lastName: 'Arnoldsen', 
-      email: 'ThomasA@gmail.dk', 
+      {_id: '3',
+      firstName: 'Thomas',
+      lastName: 'Arnoldsen',
+      email: 'ThomasA@gmail.dk',
       password: '12345',
       role: 'user'},
 
@@ -102,6 +102,6 @@ export class LoginComponent implements OnInit {
     return users;
 
   }
- 
+
 
 }
