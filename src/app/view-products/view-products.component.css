@@ -1,14 +1,14 @@
 .example-card {
     max-width: 300px;
   }
-  
+
   .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-image: url('http://snoops.dk/wp-content/uploads/2011/12/hunde-kiks.png');
     background-size: cover;
   }
-  
+
   .lift-container {
     position: relative;
     float: left;
-    margin-left: 1%;  
+    margin-left: 1%;
   }

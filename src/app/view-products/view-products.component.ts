@@ -18,7 +18,7 @@ export class ViewProductsComponent implements OnInit {
 
   ngOnInit() {
     this.data.GetProducts();
-    console.log("finished loading")
+    console.log("finished loading");
 
 
   }
