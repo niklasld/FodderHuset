@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
           //   this.router.navigate(['/landing-page']));
 
           // }
-          else {console.log("auth service");
+
 
           this.auth.login().subscribe(result => {
             console.log(result)
