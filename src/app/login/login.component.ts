@@ -1,3 +1,4 @@
+import { ApiService } from './../api.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, EmailValidator, Validators } from '@angular/forms';
 import { User } from 'src/entities/user';
@@ -14,14 +15,28 @@ import { UseradminService } from '../useradmin.service';
 export class LoginComponent implements OnInit {
 
   loginForm : FormGroup;
+  users: User[];
+
   constructor(private fb: FormBuilder, private auth: AuthService, private router: Router,
-    private adminauth: UseradminService) { }
+    private adminauth: UseradminService, private api: ApiService) { }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
       "email": ['', Validators.required],
       "password": ['', Validators.required]
+
+
     })
+    this.getUsers();
+
+
+  }
+
+  public getUsers(){
+
+    this.api.GetAllUsers().subscribe(res => {
+      this.users = res;
+    });
   }
 
   onLoginClick() : void {
@@ -30,16 +45,18 @@ export class LoginComponent implements OnInit {
 
 
       if(this.loginForm.valid) {
-        //hent api user liste
 
-        //tempstart
-        let users: User[];
-        users = this.createlist(users);
+
+
+
         //tempslut
         let userLoginAttempt = this.loginForm.value as User;
 
 
-        users.forEach(element => {
+
+        this.users.forEach(element => {
+
+
           if(userLoginAttempt.email === element.email && userLoginAttempt.password === element.password) {
             console.log("succesfull LOGIN!!! welcome "+ element.firstName);
 
@@ -49,24 +66,16 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['landing-page']);
             });
 
+            if(element.role === 'admin'){
+              console.log(element.email);
+              console.log("admin else if ramt")
+              this.adminauth.admin().subscribe(() =>
+              this.router.navigate(['/landing-page']));
+            }
+
           }
-          if(element.role == 'admin'){
-            console.log("admin else if ramt")
-            this.adminauth.admin().subscribe(() =>
-            this.router.navigate(['/landing-page']));
-          }
 
-          else if(this.loginForm.value.email == 'user@gmail.dk'){
-            this.adminauth.admin().subscribe(() =>
-            this.router.navigate(['/landing-page']));
-
-          }else {console.log("auth service");
-
-          // else if(this.loginForm.value.email == 'user@gmail.dk'){
-          //   this.adminauth.admin().subscribe(() =>
-          //   this.router.navigate(['/landing-page']));
-
-          // }
+          else {console.log("auth service");
 
 
           this.auth.login().subscribe(result => {
@@ -81,37 +90,5 @@ export class LoginComponent implements OnInit {
 
     }
   }
-
-
-
-  createlist(users) : Array<User> {
-
-    users = [
-      {_id: '1',
-      firstName: 'peter',
-      lastName: 'pedal',
-      email: 'user@gmail.dk',
-      password: '123',
-      role: 'admin'},
-
-      {_id: '2',
-      firstName: 'Anders',
-      lastName: 'Andersen',
-      email: 'Anders@gmail.dk',
-      password: '1234',
-      role: 'user'},
-
-      {_id: '3',
-      firstName: 'Thomas',
-      lastName: 'Arnoldsen',
-      email: 'ThomasA@gmail.dk',
-      password: '12345',
-      role: 'user'},
-
-    ];
-    return users;
-
-  }
-
 
 }

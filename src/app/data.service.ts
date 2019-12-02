@@ -7,25 +7,20 @@ import { product } from 'src/entities/product';
 export class DataService {
   testProducts: product[] = [
     {
-      AnimalId: 1, 
-      Name: 'Hundebiks',
-      Animal: 'Hund',
-      Price: 230,
-      Weight: 5000
+     _Id: 1,
+     Name: 'Hundemad',
+     Price: 123,
+     Weight: 3,
+     imgLinlk: 'hej',
+     AnimnalID: 3,
     },
     {
-      AnimalId: 2, 
-      Name: 'Kattehaps',
-      Animal: 'Kat',
-      Price: 130,
-      Weight: 1300
-    },
-    {
-      AnimalId: 3, 
-      Name: 'Hamsterfusk',
-      Animal: 'Hamster',
-      Price: 89,
-      Weight: 800
+      _Id: 2,
+      Name: 'Kattemad',
+      Price: 5,
+      Weight: 1,
+      imgLinlk: 'hej',
+      AnimnalID: 3,
     }
   ]
   constructor() { }
