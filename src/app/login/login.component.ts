@@ -43,30 +43,23 @@ export class LoginComponent implements OnInit {
           if(userLoginAttempt.email === element.email && userLoginAttempt.password === element.password) {
             console.log("succesfull LOGIN!!! welcome "+ element.firstName);
             
-            this.auth.LoggedinUser = userLoginAttempt;
-      
-            this.auth.login().subscribe(result => {
-              this.router.navigate(['landing-page']); 
-            });
-
-          }
-          if(element.role == 'admin'){
-            console.log("admin else if ramt")
-            this.adminauth.admin().subscribe(() =>
-            this.router.navigate(['/landing-page']));
-          }
-          // else if(this.loginForm.value.email == 'user@gmail.dk'){
-          //   this.adminauth.admin().subscribe(() =>
-          //   this.router.navigate(['/landing-page']));
+            this.auth.LoggedinUser = element;
+            
+            alert(element.role)  
+            if(element.role == 'admin'){
+              console.log("admin else if ramt")
+              this.adminauth.admin().subscribe(() => this.router.navigate(['/admin-portal']));
+            }
+            else {
+              console.log("auth service");
+              this.auth.login().subscribe(result => {
+                console.log(result)
+                this.router.navigate(['landing-page']); 
+              });
           
-          // }
-          else {console.log("auth service");
-          this.auth.login().subscribe(result => {
-            console.log(result)
-            this.router.navigate(['landing-page']); 
-          });
-        
-         }
+            }
+          }
+          
         });
         }  else{
       console.log("Cant. Must fix form errors first");
