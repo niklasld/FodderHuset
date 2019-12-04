@@ -1,3 +1,4 @@
+import { cart } from './../entities/cart';
 import { Injectable } from '@angular/core';
 import { product } from 'src/entities/product';
 
@@ -26,6 +27,20 @@ export class DataService {
       Animal: 'Hamster',
       Price: 89,
       Weight: 800
+    }
+  ]
+  testCart: cart[] = [
+    {
+      cartId: 1,
+      userId: 1,
+      productId: 1,
+      amount: 2
+    },
+    {
+      cartId: 2,
+      userId: 1,
+      productId: 2,
+      amount: 3
     }
   ]
   constructor() { }

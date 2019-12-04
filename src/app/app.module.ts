@@ -19,6 +19,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ViewProductsComponent } from './view-products/view-products.component';
 import {MatCardModule} from '@angular/material/card';
 import { FilterProduct } from './view-products/product.filter';
+import { ShoppingBasketComponent } from './shopping-basket/shopping-basket.component';
 
 
 //import {MatCardModule} from '@angular/material/card';
@@ -32,7 +33,8 @@ import { FilterProduct } from './view-products/product.filter';
     PageNotFoundComponent,
     RegisterUserComponent,
     ViewProductsComponent,
-    FilterProduct
+    FilterProduct,
+    ShoppingBasketComponent
   ],
   imports: [
     BrowserModule,

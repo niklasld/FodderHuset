@@ -1,3 +1,4 @@
+import { ShoppingBasketComponent } from './shopping-basket/shopping-basket.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'view-products', component: ViewProductsComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register-user', component: RegisterUserComponent},
+  {path: 'shopping-basket', component: ShoppingBasketComponent},
 { path: '**', component: PageNotFoundComponent }
 ];
 
