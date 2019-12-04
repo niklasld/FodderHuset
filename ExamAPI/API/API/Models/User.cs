@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -11,7 +11,7 @@ namespace API.Models
     {
         public User() { }
 
-        [Key]
+        
         public int ID { get; set; }
         public string email { get; set; }
         public string firstName { get; set; }
@@ -20,5 +20,7 @@ namespace API.Models
         public string city { get; set; }
         public string role { get; set; }
 
-    }
+        //FK
+        public virtual ICollection<Order> Orders { get; set; }
+  }
 }

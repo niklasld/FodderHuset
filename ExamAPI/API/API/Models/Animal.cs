@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,7 +14,9 @@ namespace API.Models
         public int ID { get; set; }
         public string AnimalName { get; set; }
 
+        public virtual ICollection<Products> Products { get; set; }
 
-        public Animal() { }
+
+    public Animal() { }
     }
 }
