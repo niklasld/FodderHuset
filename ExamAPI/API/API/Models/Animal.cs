@@ -14,6 +14,8 @@ namespace API.Models
         public int ID { get; set; }
         public string AnimalName { get; set; }
 
+        public virtual ICollection<Products> Products { get; set; }
+
 
         public Animal() { }
     }

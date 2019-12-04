@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\knuds\\Desktop\\ng\\Exam-NG\\ExamAPI\\API\\API\\API.csproj": {}
+    "C:\\Users\\knuds\\Desktop\\dot net\\APIFinal\\API\\API\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\knuds\\Desktop\\ng\\Exam-NG\\ExamAPI\\API\\API\\API.csproj": {
+    "C:\\Users\\knuds\\Desktop\\dot net\\APIFinal\\API\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\knuds\\Desktop\\ng\\Exam-NG\\ExamAPI\\API\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\knuds\\Desktop\\dot net\\APIFinal\\API\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\knuds\\Desktop\\ng\\Exam-NG\\ExamAPI\\API\\API\\API.csproj",
+        "projectPath": "C:\\Users\\knuds\\Desktop\\dot net\\APIFinal\\API\\API\\API.csproj",
         "packagesPath": "C:\\Users\\knuds\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\knuds\\Desktop\\ng\\Exam-NG\\ExamAPI\\API\\API\\obj\\",
+        "outputPath": "C:\\Users\\knuds\\Desktop\\dot net\\APIFinal\\API\\API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
