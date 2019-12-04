@@ -1,11 +1,20 @@
+<<<<<<< HEAD
 import { cart } from './../entities/cart';
 import { Injectable } from '@angular/core';
+=======
+import { animal } from './../entities/animal';
+>>>>>>> API
 import { product } from 'src/entities/product';
+import { ApiService } from './api.service';
+import { Injectable, OnInit } from '@angular/core';
+
+import { User } from 'src/entities/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
+<<<<<<< HEAD
   testProducts: product[] = [
     {
       AnimalId: 1, 
@@ -57,4 +66,35 @@ export class DataService {
 
     this.testCart.push(newCartItem);
   }
+=======
+
+  users: User[];
+  products: product[];
+  animals: animal[];
+
+  constructor(private api: ApiService) { }
+
+
+  public getUsers(){
+
+    this.api.GetAllUsers().subscribe(res => {
+      this.users = res;
+    });
+  }
+
+  public GetProducts(){
+    let prod : product[];
+
+    this.api.GetAllProducts().subscribe(res => {
+      this.products = res;
+    });
+
+  }
+
+  public GetAnimals(){
+    this.api.GetAllAnimals().subscribe(res =>{ this.animals = res;});
+  }
+
+
+>>>>>>> API
 }
