@@ -28,7 +28,7 @@ export class DataService {
       Price: 89,
       Weight: 800
     }
-  ]
+  ];
   testCart: cart[] = [
     {
       cartId: 1,
@@ -42,6 +42,19 @@ export class DataService {
       productId: 2,
       amount: 3
     }
-  ]
+  ];
   constructor() { }
+
+  addProductToCart(userId: number, productId: number, amount: number) {
+    length = this.testCart.length;
+    let id = Math.floor(Math.random() * (999999 - 100000)) + 100000;
+    let newCartItem: cart = {
+      cartId: id,
+      userId: userId,
+      productId: productId,
+      amount: amount
+    };
+
+    this.testCart.push(newCartItem);
+  }
 }
