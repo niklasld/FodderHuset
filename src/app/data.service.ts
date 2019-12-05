@@ -13,6 +13,7 @@ export class DataService {
   users: User[];
   products: product[];
   animals: animal[];
+  //orders: orders[];
 
   constructor(private api: ApiService) { }
 
@@ -32,10 +33,11 @@ export class DataService {
     });
 
   }
-
   public GetAnimals(){
     this.api.GetAllAnimals().subscribe(res =>{ this.animals = res;});
   }
 
-
+  public GetOrders() {
+    this.api.GetAllOrders().subscribe(res =>{this.orders = res;});
+  }
 }

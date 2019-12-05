@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { product } from 'src/entities/product';
 import { User } from 'src/entities/user';
 import { animal } from 'src/entities/animal';
+//import { orders } from 'src/entities/orders';
 
 
 
@@ -15,6 +16,8 @@ export class ApiService {
   productURL = 'https://examapi20191201064109.azurewebsites.net/api/products';
   userURL = 'https://examapi20191201064109.azurewebsites.net/api/users';
   animalURL  = 'https://examapi20191201064109.azurewebsites.net/api/animals';
+  ordersURL  = 'https://examapi20191201064109.azurewebsites.net/api/orders';
+  
 
   constructor(private http: HttpClient, ) { }
 
@@ -41,5 +44,9 @@ export class ApiService {
 
   CreateAnimal(newAnimal: animal){
     return this.http.post(this.animalURL, newAnimal);
+  }
+
+  GetAllOrders(): Observable<any> {
+    return this.http.get(this.ordersURL);
   }
 }
