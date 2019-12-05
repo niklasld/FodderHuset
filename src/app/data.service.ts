@@ -29,4 +29,9 @@ export class DataService {
     }
   ]
   constructor() { }
+
+  addProduct(product: product):void{
+
+    this.testProducts.push(product);
+  }
 }

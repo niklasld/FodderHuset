@@ -5,6 +5,7 @@ import { AuthService } from '../auth.service';
 import { UseradminService } from '../useradmin.service';
 import { product } from 'src/entities/product';
 import { User } from 'src/entities/user';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-add-products',
@@ -15,7 +16,7 @@ export class AddProductsComponent implements OnInit {
 
   addProductForm: FormGroup
 
-  constructor(private fb: FormBuilder, private router: Router, private AdminAuth: UseradminService) { }
+  constructor(private fb: FormBuilder, private router: Router, private AdminAuth: UseradminService, private dataService: DataService) { }
 
   ngOnInit() {
     this.addProductForm = this.fb.group({
@@ -25,12 +26,14 @@ export class AddProductsComponent implements OnInit {
       "Weight":["", Validators.required],
     })
   }
-
+// not done, doesnt add a new product. 
   onAddProductsSubmit():void {
     if(this.addProductForm.valid){
-      let product = this.addProductForm.value as product;
       
-       this.router.navigate(["/portal/findalift"]); // should navigate to the showproducts list
+      let product = this.addProductForm.value as product;
+      this.dataService.addProduct(product);
+
+      this.router.navigate(["/view-products"]); // should navigate to the showproducts list
     }  
   }
 }
