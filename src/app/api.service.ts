@@ -17,7 +17,7 @@ export class ApiService {
   userURL = 'https://examapi20191201064109.azurewebsites.net/api/users';
   animalURL  = 'https://examapi20191201064109.azurewebsites.net/api/animals';
   ordersURL  = 'https://examapi20191201064109.azurewebsites.net/api/orders';
-  
+  cartUTL = 'https://examapi20191201064109.azurewebsites.net/api/orders';
 
   constructor(private http: HttpClient, ) { }
 
