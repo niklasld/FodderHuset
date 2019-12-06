@@ -1,7 +1,15 @@
 export class product{
-    AnimalId: number; 
+    Id: number;
     Name: string;
-    Animal: string;
     Price: number;
     Weight: number;
+    imgLink: string;
+    foodFor?: string;
+    animalID?: number;
+
+    localFilter?: string;
+
+
 }
+
+

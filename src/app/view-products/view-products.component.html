@@ -1,24 +1,28 @@
+
 <p>view-products works!</p>
 <div>
 <input type="text" [(ngModel)]="searchInput">
 </div>
-<div *ngFor="let product of dataService.testProducts | filterProducts: searchInput" class="lift-container">
+<div *ngFor="let product of data.testProducts | filterProducts: searchInput" class="lift-container">
 
     <mat-card class="example-card">
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
           <mat-card-title>{{product.Name}}</mat-card-title>
-          <mat-card-subtitle>Pris: {{product.Price}}, Vægt {{product.Weight}}</mat-card-subtitle>
+          <mat-card-subtitle>Pris: {{product.Price}}, Vægt {{product.Weight}} Kg</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+        <img mat-card-image src={{product.imgLink}} alt="Photo of a Shiba Inu">
         <mat-card-content>
           <p>
-            Til {{product.Animal}}
+            Til {{product.foodFor}}
           </p>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-button>LIKE</button>
-          <button mat-button>SHARE</button>
+         <button mat-button>Add to Cart</button>
+
+          <button *ngIf="auth.LoggedinUser?.role === 'admin' " mat-button (click)="onDeleteProduct(product.AnimalId)">DELETE</button>
         </mat-card-actions>
-      </mat-card>  
+      </mat-card>
 </div>
+
+<h1>END TO END TEST</h1>
