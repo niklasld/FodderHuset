@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
           if(userLoginAttempt.email === element.email && userLoginAttempt.password === element.password) {
             console.log("succesfull LOGIN!!! welcome "+ element.firstName);
 
-            this.auth.LoggedinUser = userLoginAttempt;
+            this.auth.LoggedinUser = element;
 
             if(element.role === 'admin'){
               console.log(element.email);
@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
 
             else {
               console.log("user else ramt");
-              this.auth.login().subscribe(result => {
+              this.auth.login(element).subscribe(result => {
                 this.router.navigate(['landing-page']);
               });
 

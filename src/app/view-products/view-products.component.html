@@ -20,7 +20,8 @@
         <mat-card-actions>
          <button mat-button>Add to Cart</button>
 
-          <button *ngIf="auth.LoggedinUser?.role === 'admin' " mat-button (click)="onDeleteProduct(product.AnimalId)">DELETE</button>
+        <button *ngIf="auth.LoggedinUser.role == 'admin' " mat-button (click)="onDeleteProduct(product.Id)">DELETE</button>
+        
         </mat-card-actions>
       </mat-card>
 </div>

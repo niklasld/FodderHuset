@@ -9,17 +9,22 @@ import { User } from 'src/entities/user';
 })
 export class AuthService {
   isLoggedin = false;
-  LoggedinUser: User;
+  LoggedinUser: User = new User();
+
+
 
   constructor( )
   {}
 
-  login(): Observable<boolean> {
+  login(User: User): Observable<boolean> {
 
+    this.isLoggedin = true;
     return of(true).pipe(
       delay(1000),
-      tap(val => this.isLoggedin = true)
+      tap(val => this.LoggedinUser = User)
     );
+
+
   }
 
   logout(): void {

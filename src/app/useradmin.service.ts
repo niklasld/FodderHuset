@@ -12,7 +12,7 @@ export class UseradminService {
   redirectUrl: string;
 
   admin(): Observable<boolean> {
-    
+
 
     return of(true).pipe(
       delay(1000),
