@@ -5,6 +5,7 @@ import { ApiService } from './api.service';
 import { Injectable, OnInit } from '@angular/core';
 
 import { User } from 'src/entities/user';
+import { element } from 'protractor';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,29 @@ export class DataService {
   orders: orders[];
   // CARTS
 
-
+    testOrders: orders[] = [
+      {
+        _ID: 1,
+        userID: 1,
+        productID: 1,
+        amount: 2,
+        localFilter: "TeamNice"
+      },
+      {
+        _ID: 2,
+        userID: 2,
+        productID: 2,
+        amount: 1,
+        localFilter: "TeamNice"
+      },
+      {
+        _ID: 3,
+        userID: 1,
+        productID: 3,
+        amount: 1,
+        localFilter: "TeamNice"
+      }
+    ]  
 
 
     testProducts: product[] =[
@@ -112,10 +135,57 @@ export class DataService {
 
   }
 
-
+  getProductTestId(id: number): product {
+    //let tempProduct: product;
+    this.testProducts.forEach(element => {
+      if(element.Id === id) {
+        console.log('product id found');
+        return element;
+      }
+    });
+    console.log('product id not found.');
+    return null;
+  }
+  
   addProductTest(product: product):void{
 
     this.testProducts.push(product);
+  }
+
+  getAllTestOrders() {
+    console.log('get orders kaldt i data service');
+
+    return this.testOrders;
+
+  }
+
+  getTestOrdersByUserId(id: number): orders[] {
+    let tempOrders: orders[];
+    this.testOrders.forEach(element => {
+      if(element.userID === id) {
+        tempOrders.push(element);
+      }
+    })
+    return tempOrders;
+  }
+
+  getTestOrdersById(id: number): orders {
+    this.testOrders.forEach(element => {
+      if(element._ID === id) {
+        return element;
+      }
+    })
+    return null;
+  }
+
+  getTestOrdersByProductId(id: number): orders[] {
+    let tempOrders: orders[];
+    this.testOrders.forEach(element => {
+      if(element.productID === id) {
+        tempOrders.push(element);
+      }
+    })
+    return tempOrders;
   }
 
   constructor(private api: ApiService) { }
