@@ -1,9 +1,12 @@
+import { product } from './product';
 export class User{
-    _id: string;
+    _ID: number;
+    email: string;
     firstName: string;
     lastName: string;
-    email: string;
     password: string;
+    city: string;
+    ProductID: number;
     role: string;
- 
+
 }

@@ -1,7 +1,9 @@
 export class product{
-    AnimalId: number; 
-    Name: string;
-    Animal: string;
-    Price: number;
-    Weight: number;
+   _Id: number;
+   name: string;
+   price: number;
+   weight: number;
+   imgLink: string;
+   animnalID: number;
+   foodFor: string;
 }

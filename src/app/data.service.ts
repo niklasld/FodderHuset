@@ -1,37 +1,45 @@
-import { Injectable } from '@angular/core';
+import { animal } from './../entities/animal';
 import { product } from 'src/entities/product';
+import { ApiService } from './api.service';
+import { Injectable, OnInit } from '@angular/core';
+
+import { User } from 'src/entities/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  testProducts: product[] = [
-    {
-      AnimalId: 1, 
-      Name: 'Hundebiks',
-      Animal: 'Hund',
-      Price: 230,
-      Weight: 5000
-    },
-    {
-      AnimalId: 2, 
-      Name: 'Kattehaps',
-      Animal: 'Kat',
-      Price: 130,
-      Weight: 1300
-    },
-    {
-      AnimalId: 3, 
-      Name: 'Hamsterfusk',
-      Animal: 'Hamster',
-      Price: 89,
-      Weight: 800
-    }
-  ]
-  constructor() { }
+  users: User[];
+  products: product[];
+  animals: animal[];
+  //orders: orders[];
 
-  addProduct(product: product):void{
+  constructor(private api: ApiService) { }
 
-    this.testProducts.push(product);
+
+  public getUsers(){
+
+    this.api.GetAllUsers().subscribe(res => {
+      this.users = res;
+    });
   }
+
+  public GetProducts(){
+    let prod : product[];
+
+    this.api.GetAllProducts().subscribe(res => {
+      this.products = res;
+    });
+
+  }
+  public addProduct(product: product) {
+    this.api.CreateProduct(product);
+  }
+  public GetAnimals(){
+    this.api.GetAllAnimals().subscribe(res =>{ this.animals = res;});
+  }
+
+  /*public GetOrders() {
+    this.api.GetAllOrders().subscribe(res =>{this.orders = res;});
+  }*/
 }
