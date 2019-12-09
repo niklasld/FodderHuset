@@ -3,6 +3,7 @@ import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { product } from 'src/entities/product';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-view-products',
@@ -14,9 +15,10 @@ import { product } from 'src/entities/product';
 export class ViewProductsComponent implements OnInit {
   products: product[];
   LoggedInUserVP: User;
+  addToCartForm: FormGroup;
 
 
-  constructor(private data: DataService, private auth: AuthService) { }
+  constructor(private data: DataService, private auth: AuthService, private fb: FormBuilder) { }
 
   ngOnInit() {
     //this.data.GetProducts();
@@ -32,6 +34,11 @@ export class ViewProductsComponent implements OnInit {
     console.log(this.LoggedInUserVP.role);
     console.log(this.auth.LoggedinUser.role);
 
+    this.addToCartForm = this.fb.group({
+      "id":["", Validators.required],
+      "amount":["", Validators.required],
+    });
+
 
   }
 
@@ -39,6 +46,17 @@ export class ViewProductsComponent implements OnInit {
   onDeleteProduct(id: number):void  {
 
     this.data.testProducts = this.data.testProducts.filter(products =>products.Id !==id);
+
+  }
+
+  onAddProductToCart() {
+    if(this.addToCartForm.valid){
+      let test = this.addToCartForm.value;
+      console.log(this.addToCartForm.value);
+      //let product = this.addProductForm.value as product;
+
+    }
+    //this.data.addProductToCart(this.data.getProductTestId(id), amount);
 
   }
 
