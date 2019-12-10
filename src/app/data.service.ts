@@ -45,7 +45,7 @@ export class DataService {
         price: 32,
         localFilter: "TeamNice"
       }
-    ]  
+    ]
 
 
     testProducts: product[] =[
@@ -151,7 +151,7 @@ export class DataService {
     console.log('product id not found.');
     return null;
   }
-  
+
   addProductTest(product: product):void{
 
     this.testProducts.push(product);
@@ -208,7 +208,7 @@ export class DataService {
 
   addProductToCart(product: product, amount: number): void {
     let newCartOrder: cart;
-    
+
     newCartOrder.ID = this.cartProducts.length+1;
     newCartOrder.productID = product.Id;
     newCartOrder.amount = amount;
@@ -267,9 +267,9 @@ export class DataService {
   //   this.api.GetAllOrders().subscribe(res =>{this.orders = res;});
   // }
 
-  // public addProduct(product: product): void{
-  //   console.log(product.Name);
-  //   //this.api.PostProduct(product).subscribe(product => this.products.push(product));
-  //   this.api.CreateProduct(product);
-  // }
+  public addProduct(product: product): void{
+    console.log(product.Name);
+    this.api.PostProduct(product).subscribe(product => this.products.push(product));
+    //this.api.CreateProduct(product);
+  }
 }

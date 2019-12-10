@@ -34,8 +34,8 @@ export class AddProductsComponent implements OnInit {
       let product = this.addProductForm.value as product;
       console.log("pre post til api ramt");
       console.log(product.Name);
-      //this.dataService.addProduct(product);
-      this.dataService.addProductTest(product);
+      this.dataService.addProduct(product);
+      //this.dataService.addProductTest(product);
       this.router.navigate(["/view-products"]); // should navigate to the showproducts list
     }
   }
