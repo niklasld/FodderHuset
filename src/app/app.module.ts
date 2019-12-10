@@ -21,6 +21,7 @@ import {MatCardModule} from '@angular/material/card';
 import { FilterProduct } from './view-products/product.filter';
 import { AddProductsComponent } from './add-products/add-products.component';
 import { AdminPortalComponent } from './admin-portal/admin-portal.component';
+import { CartComponent } from './cart/cart.component';
 
 
 //import {MatCardModule} from '@angular/material/card';
@@ -36,7 +37,8 @@ import { AdminPortalComponent } from './admin-portal/admin-portal.component';
     ViewProductsComponent,
     FilterProduct,
     AddProductsComponent,
-    AdminPortalComponent
+    AdminPortalComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

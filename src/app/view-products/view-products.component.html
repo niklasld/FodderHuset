@@ -19,20 +19,30 @@
         </mat-card-content>
         <mat-card-actions>
           <button *ngIf="auth.LoggedinUser.role == 'admin' " mat-button (click)="onDeleteProduct(product.Id)">DELETE</button>
+<<<<<<< HEAD
 
           <form [formGroup]="addToCartForm" class="example-form" (ngSubmit)="onAddProductToCart()">
             <mat-form-field>
               <input matInput = "1" type="number" id="amount" formControlName="amount">
               <p>{{product.Id}}</p>
+=======
+          
+          <form [formGroup]="addToCartForm" class="example-form" (ngSubmit)="onAddProductToCart(product.Id)">
+            <mat-form-field>              
+              <input matInput = "1" type="number" id="amount" formControlName="amount">              
+>>>>>>> 21bbe7b08f2b8f3f7da34a833f1b5ddab9d74231
               <mat-error>
                 please enter the amount you want
               </mat-error>
             </mat-form-field>
+<<<<<<< HEAD
             <mat-form-field style="visibility: hidden;">
                 <input matInput type="number" value={{product.Id}} id="id" formControlName="id">
 
             </mat-form-field>
 
+=======
+>>>>>>> 21bbe7b08f2b8f3f7da34a833f1b5ddab9d74231
             <button mat-raised-button color="primary" id="AddtoCart-submitBotton">Add to Cart</button>
 
           </form>
