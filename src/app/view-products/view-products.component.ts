@@ -1,8 +1,8 @@
+import { product } from './../../entities/product';
 import { User } from 'src/entities/user';
 import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import { product } from 'src/entities/product';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -35,7 +35,7 @@ export class ViewProductsComponent implements OnInit {
     console.log(this.auth.LoggedinUser.role);
 
     this.addToCartForm = this.fb.group({
-      "id":["", Validators.required],
+      //"id":[, ],
       "amount":["", Validators.required],
     });
 
@@ -49,12 +49,11 @@ export class ViewProductsComponent implements OnInit {
 
   }
 
-  onAddProductToCart() {
+  onAddProductToCart(id: number) {
     if(this.addToCartForm.valid){
-      let test = this.addToCartForm.value;
-      console.log(this.addToCartForm.value);
-      //let product = this.addProductForm.value as product;
+      //let test = this.addToCartForm.value;
 
+      this.data.addProductToCart(this.data.getProductTestId(id),this.addToCartForm.value);
     }
     //this.data.addProductToCart(this.data.getProductTestId(id), amount);
 

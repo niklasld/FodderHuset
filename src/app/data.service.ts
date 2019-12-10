@@ -1,6 +1,6 @@
+import { product } from './../entities/product';
 import { orders } from 'src/entities/orders';
 import { animal } from './../entities/animal';
-import { product } from 'src/entities/product';
 import { ApiService } from './api.service';
 import { Injectable, OnInit } from '@angular/core';
 
@@ -18,7 +18,7 @@ export class DataService {
   products: product[];
   animals: animal[];
   orders: orders[];
-  cartProducts: cart[];
+  cartProducts: cart[] = [];
 
     testOrders: orders[] = [
       {
@@ -141,15 +141,15 @@ export class DataService {
   }
 
   getProductTestId(id: number): product {
-    //let tempProduct: product;
+    let tempProduct: product;
     this.testProducts.forEach(element => {
       if(element.Id === id) {
         console.log('product id found');
-        return element;
+        tempProduct = element;
       }
     });
-    console.log('product id not found.');
-    return null;
+    console.log(tempProduct.Id);
+    return tempProduct;
   }
   
   addProductTest(product: product):void{
@@ -208,9 +208,9 @@ export class DataService {
 
   addProductToCart(product: product, amount: number): void {
     let newCartOrder: cart;
-    
-    newCartOrder.ID = this.cartProducts.length+1;
-    newCartOrder.productID = product.Id;
+
+    newCartOrder.ID = this.cartProducts.length;
+    //console.log(amount);
     newCartOrder.amount = amount;
     newCartOrder.totalPrice = product.Price * amount;
     newCartOrder.localFilter = "TEAMNICE";
