@@ -207,10 +207,9 @@ export class DataService {
   }
 
   addProductToCart(product: product, amount: number): void {
-    let newCartOrder: cart;
+    let newCartOrder: cart = new cart;
 
     newCartOrder.ID = this.cartProducts.length;
-    //console.log(amount);
     newCartOrder.amount = amount;
     newCartOrder.totalPrice = product.Price * amount;
     newCartOrder.localFilter = "TEAMNICE";
