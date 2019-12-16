@@ -210,6 +210,7 @@ export class DataService {
     let newCartOrder: cart = new cart;
 
     newCartOrder.ID = this.cartProducts.length;
+    //vi får stadig ikke amount som et tal
     newCartOrder.amount = amount;
     newCartOrder.totalPrice = product.Price * amount;
     newCartOrder.localFilter = "TEAMNICE";
