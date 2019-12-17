@@ -16,6 +16,7 @@ export class ViewProductsComponent implements OnInit {
   products: product[];
   LoggedInUserVP: User;
   addToCartForm: FormGroup;
+  
   //totalværdi i cart
   cartAmount: number;
   //mængde af vare

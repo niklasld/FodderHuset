@@ -226,7 +226,6 @@ export class DataService {
     this.cartProducts.forEach(element => {
       amountTotal += element.totalPrice;
     });
-    console.log(amountTotal);
     return amountTotal;
   }
 
@@ -235,7 +234,6 @@ export class DataService {
     this.cartProducts.forEach(hans => {
       amountOfItems += hans.amount;
     });
-    console.log('getCartAmountOfProducts kaldt - returned: '+ amountOfItems);
     return amountOfItems;
   }
 

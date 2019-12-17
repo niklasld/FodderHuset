@@ -1,5 +1,6 @@
 import { DataService } from './../data.service';
 import { Component, OnInit } from '@angular/core';
+import { cart } from 'src/entities/cart';
 
 @Component({
   selector: 'app-cart',
@@ -8,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartComponent implements OnInit {
 
-  constructor(data: DataService) { }
+
+  constructor(private data: DataService) { }
 
   ngOnInit() {
+
   }
 
 }
