@@ -20,6 +20,7 @@ export class DataService {
   orders: orders[];
   cartProducts: cart[] = [];
 
+
     testOrders: orders[] = [
       {
         _ID: 1,
@@ -211,11 +212,31 @@ export class DataService {
 
     newCartOrder.ID = this.cartProducts.length;
     //vi får stadig ikke amount som et tal
+
     newCartOrder.amount = amount;
     newCartOrder.totalPrice = product.Price * amount;
     newCartOrder.localFilter = "TEAMNICE";
 
     this.cartProducts.push(newCartOrder);
+  }
+
+  getCartAmount(): number{
+    let amountTotal: number = 0;
+
+    this.cartProducts.forEach(element => {
+      amountTotal += element.totalPrice;
+    });
+    console.log(amountTotal);
+    return amountTotal;
+  }
+
+  getCartAmountOfProducts(): number{
+    let amountOfItems: number = 0;
+    this.cartProducts.forEach(hans => {
+      amountOfItems += hans.amount;
+    });
+    console.log('getCartAmountOfProducts kaldt - returned: '+ amountOfItems);
+    return amountOfItems;
   }
 
   getProductsInCart(): product[] {

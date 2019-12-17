@@ -16,6 +16,10 @@ export class ViewProductsComponent implements OnInit {
   products: product[];
   LoggedInUserVP: User;
   addToCartForm: FormGroup;
+  //totalværdi i cart
+  cartAmount: number;
+  //mængde af vare
+  cartProducts: number;
 
 
   constructor(private data: DataService, private auth: AuthService, private fb: FormBuilder) { }
@@ -40,6 +44,10 @@ export class ViewProductsComponent implements OnInit {
     });
 
 
+
+
+
+
   }
 
 
@@ -53,7 +61,8 @@ export class ViewProductsComponent implements OnInit {
     if(this.addToCartForm.valid){
       //let test = this.addToCartForm.value;
 
-      this.data.addProductToCart(this.data.getProductTestId(id),this.addToCartForm.value);
+
+      this.data.addProductToCart(this.data.getProductTestId(id),this.addToCartForm.value.amount);
     }
     //this.data.addProductToCart(this.data.getProductTestId(id), amount);
 

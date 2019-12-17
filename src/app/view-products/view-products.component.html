@@ -3,9 +3,10 @@
 <div>
 <input type="text" [(ngModel)]="searchInput">
 </div>
+<div class="col-md-8">
 <div *ngFor="let product of data.testProducts | filterProducts: searchInput" class="lift-container">
 
-    <mat-card class="example-card"> 
+    <mat-card class="example-card col-md-3">
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
           <mat-card-title>{{product.Name}}</mat-card-title>
@@ -35,5 +36,16 @@
 
       </mat-card>
 </div>
+</div>
+
+
+<div class="col-md-4">
+  <p>mini version af cart</p>
+  <p>amount of items: {{data.getCartAmountOfProducts()}}{{cartAmount}}</p>
+  <p>totalt amount so far: {{data.getCartAmount()}}</p>
+
+  <p>wannabe-btn</p>
+</div>
 
 <h1>END TO END TEST</h1>
+
