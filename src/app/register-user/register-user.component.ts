@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { DataService } from './../data.service';
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
@@ -11,10 +12,10 @@ import { User } from 'src/entities/user';
 })
 
 export class RegisterUserComponent implements OnInit {
-  
+
   registerForm : FormGroup;
 
-  constructor(private fb: FormBuilder, private data: DataService) { }
+  constructor(private fb: FormBuilder, private data: DataService, private router: Router) { }
 
   ngOnInit() {
     this.registerForm = this.fb.group({
@@ -32,8 +33,9 @@ export class RegisterUserComponent implements OnInit {
         let user = this.registerForm.value as User;
         console.log("haha"+ user.email);
         this.data.addUser(user);
-        
-        
+        this.router.navigate(['login']);
+
+
       } else{
         console.log("Cant. Must fix register form errors first");
       }

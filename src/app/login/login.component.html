@@ -1,20 +1,20 @@
 <h2>login works!</h2>
 
 <form [formGroup]="loginForm" class="example-form" (ngSubmit)="onLoginClick()">
-    
+
         <mat-form-field class="example-full-width">
-            <input matInput placeholder="Email" id = "email-input" formControlName="email">
-            
-            <mat-error *ngIf="loginForm.controls.email.hasError('email')">
-              Please enter your Email as username to login
+            <input matInput placeholder="Email" id = "email-input" formControlName="email"pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required>
+
+            <mat-error >
+             <p> Please enter your Email as username to login </p>
             </mat-error>
-      
+
           </mat-form-field>
-        
+
           <mat-form-field class="example-full-width">
               <input matInput placeholder= "Password" id = "password-input" type = "password" formControlName="password">
           </mat-form-field>
-      
+
           <button mat-raised-button color="primary" id = "login-botton">login</button>
-      
+
         </form>

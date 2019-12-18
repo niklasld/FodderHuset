@@ -227,6 +227,7 @@ export class DataService {
 
     newCartOrder.ID = this.cartProducts.length;
     //vi får stadig ikke amount som et tal
+    newCartOrder.productID = product.Id;
 
     newCartOrder.amount = amount;
     newCartOrder.totalPrice = product.Price * amount;
@@ -277,7 +278,7 @@ export class DataService {
   }
 
 
-  
+
   getUsers() {
 
     return this.testUsers;
@@ -286,13 +287,13 @@ export class DataService {
   addUser(user: User) {
     this.testUsers.push(user);
   }
-  
+
   constructor(private api: ApiService, private auth: AuthService) { }
 
 
     /*
    public getUsers(){
-    
+
      this.api.GetAllUsers().subscribe(res => {
       this.users = res;
     });

@@ -1,6 +1,7 @@
 import { Injectable, Pipe, PipeTransform } from '@angular/core';
 import { product } from 'src/entities/product';
 
+//name - det name man skal bruge, for at kalde den her pipe
 @Pipe({name: 'filterProducts'})
 @Injectable()
 export class FilterProduct implements PipeTransform {

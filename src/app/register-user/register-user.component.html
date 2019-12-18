@@ -4,42 +4,42 @@
 
 
     <mat-form-field class="example-full-width">
-        <input matInput placeholder="first Name" formControlName="firstName">
-        
-        <mat-error *ngIf="registerForm.controls.firstName.hasError('required')">
+        <input matInput placeholder="first Name" formControlName="firstName" id="fn">
+
+        <mat-error>
         Please enter your firstname
         </mat-error>
-    
+
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-        <input matInput placeholder= "last name" formControlName="lastName">
-        
-        <mat-error *ngIf="registerForm.controls.lastName.hasError('required')">
+        <input matInput placeholder= "last name" formControlName="lastName" id="ln">
+
+        <mat-error>
                 Please enter lastName
                 </mat-error>
 
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-        <input matInput placeholder= "E-Mail" formControlName="email">
-    
-        <mat-error *ngIf="registerForm.controls.email.hasError('email')">
+        <input matInput placeholder= "E-Mail" formControlName="email" id="mail">
+
+        <mat-error>
                 Please enter your email address
                 </mat-error>
-    
+
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-        <input matInput placeholder= "password" type = "password" formControlName="password">
+        <input matInput placeholder= "password" type = "password" formControlName="password" id="passw">
 
-        <mat-error *ngIf="registerForm.controls.password.hasError('required')">
+        <mat-error>
                 Please enter your password
                 </mat-error>
-    
+
     </mat-form-field>
 
-        <button mat-raised-button color="primary">Register</button>
+        <button mat-raised-button color="primary" id="click">Register</button>
 
 
 </form>
