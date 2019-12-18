@@ -1,6 +1,8 @@
+import { DataService } from './../data.service';
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { User } from 'src/entities/user';
+
 
 @Component({
   selector: 'app-register-user',
@@ -12,7 +14,7 @@ export class RegisterUserComponent implements OnInit {
   
   registerForm : FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private data: DataService) { }
 
   ngOnInit() {
     this.registerForm = this.fb.group({
@@ -29,6 +31,8 @@ export class RegisterUserComponent implements OnInit {
       if(this.registerForm.valid) {
         let user = this.registerForm.value as User;
         console.log("haha"+ user.email);
+        this.data.addUser(user);
+        
         
       } else{
         console.log("Cant. Must fix register form errors first");

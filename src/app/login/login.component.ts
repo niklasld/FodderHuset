@@ -43,8 +43,8 @@ export class LoginComponent implements OnInit {
 
 
 
-        this.data.users.forEach(element => {
-
+        //this.data.users.forEach(element => {
+        this.data.testUsers.forEach(element => {
 
           if(userLoginAttempt.email === element.email && userLoginAttempt.password === element.password) {
             console.log("succesfull LOGIN!!! welcome "+ element.firstName);

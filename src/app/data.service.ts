@@ -17,7 +17,16 @@ export class DataService {
   orders: orders[];
   // CARTS
 
-
+    testUsers: User[] = [
+      {
+        _id: "1",
+        firstName: "anders",
+        lastName: "Andersen",
+        password: "123",
+        role: "admin",
+        email: "admin@gmail.dk"
+      }
+    ];
 
 
     testProducts: product[] =[
@@ -112,21 +121,29 @@ export class DataService {
 
   }
 
-
   addProductTest(product: product):void{
 
     this.testProducts.push(product);
   }
 
+  getUsers() {
+
+    return this.testUsers;
+  }
+
+  addUser(user: User) {
+    this.testUsers.push(user);
+  }
+
   constructor(private api: ApiService) { }
 
-
+    /*
    public getUsers(){
-
+    
      this.api.GetAllUsers().subscribe(res => {
       this.users = res;
     });
-   }
+   }*/
 
   // public GetProducts(){
 
