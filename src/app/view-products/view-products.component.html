@@ -3,9 +3,10 @@
 <div>
 <input type="text" [(ngModel)]="searchInput">
 </div>
+<div class="col-md-8">
 <div *ngFor="let product of data.testProducts | filterProducts: searchInput" class="lift-container">
 
-    <mat-card class="example-card">
+    <mat-card class="example-card col-md-3">
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
           <mat-card-title>{{product.Name}}</mat-card-title>
@@ -18,12 +19,33 @@
           </p>
         </mat-card-content>
         <mat-card-actions>
-         <button mat-button>Add to Cart</button>
+          <button *ngIf="auth.LoggedinUser.role == 'admin' " mat-button (click)="onDeleteProduct(product.Id)">DELETE</button>
 
-        <button *ngIf="auth.LoggedinUser.role == 'admin' " mat-button (click)="onDeleteProduct(product.Id)">DELETE</button>
-        
+          <form [formGroup]="addToCartForm" class="example-form" (ngSubmit)="onAddProductToCart(product.Id)">
+            <mat-form-field>
+              <input matInput = "1" type="number" id="amount" formControlName="amount">
+              <mat-error>
+                please enter the amount you want
+              </mat-error>
+            </mat-form-field>
+            <button mat-raised-button color="primary" id="AddtoCart-submitBotton">Add to Cart</button>
+
+          </form>
+
         </mat-card-actions>
+
       </mat-card>
+</div>
+</div>
+
+
+<div class="col-md-4">
+  <p>mini version af cart</p>
+  <p>amount of items: {{data.getCartAmountOfProducts()}}{{cartAmount}}</p>
+  <p>totalt amount so far: {{data.getCartAmount()}}</p>
+
+  <p>wannabe-btn</p>
 </div>
 
 <h1>END TO END TEST</h1>
+

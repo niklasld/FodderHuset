@@ -4,6 +4,6 @@ export class orders {
   userID: number;
   productID: number;
   amount: number;
-
+  price: number;
   localFilter?: string;
 }

@@ -1,6 +1,8 @@
 export class cart {
   ID: number;
-  orderID: number;
+  productID: number;
+  amount: number;
+  totalPrice: number;
 
   localFilter?: string;
 }

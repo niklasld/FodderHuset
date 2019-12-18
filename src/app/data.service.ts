@@ -1,10 +1,13 @@
+import { product } from './../entities/product';
 import { orders } from 'src/entities/orders';
 import { animal } from './../entities/animal';
-import { product } from 'src/entities/product';
 import { ApiService } from './api.service';
 import { Injectable, OnInit } from '@angular/core';
 
 import { User } from 'src/entities/user';
+import { element } from 'protractor';
+import { cart } from 'src/entities/cart';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +18,36 @@ export class DataService {
   products: product[];
   animals: animal[];
   orders: orders[];
-  // CARTS
 
+  cartProducts: cart[] = [];
+
+
+    testOrders: orders[] = [
+      {
+        _ID: 1,
+        userID: 1,
+        productID: 1,
+        amount: 2,
+        price: 12,
+        localFilter: "TeamNice"
+      },
+      {
+        _ID: 2,
+        userID: 2,
+        productID: 2,
+        amount: 1,
+        price: 21,
+        localFilter: "TeamNice"
+      },
+      {
+        _ID: 3,
+        userID: 1,
+        productID: 3,
+        amount: 1,
+        price: 32,
+        localFilter: "TeamNice"
+      }
+    ]
     testUsers: User[] = [
       {
         _id: "1",
@@ -27,6 +58,9 @@ export class DataService {
         email: "admin@gmail.dk"
       }
     ];
+
+
+
 
 
     testProducts: product[] =[
@@ -121,11 +155,129 @@ export class DataService {
 
   }
 
+
+  getProductTestId(id: number): product {
+    let tempProduct: product;
+    this.testProducts.forEach(element => {
+      if(element.Id === id) {
+        console.log('product id found');
+        tempProduct = element;
+      }
+    });
+    console.log(tempProduct.Id);
+    return tempProduct;
+  }
+
   addProductTest(product: product):void{
 
     this.testProducts.push(product);
   }
 
+  getAllTestOrders() {
+    console.log('get orders kaldt i data service');
+
+    return this.testOrders;
+
+  }
+
+  getTestOrdersByUserId(id: number): orders[] {
+    let tempOrders: orders[];
+    this.testOrders.forEach(element => {
+      if(element.userID === id) {
+        tempOrders.push(element);
+      }
+    })
+    return tempOrders;
+  }
+
+  getTestOrdersById(id: number): orders {
+    this.testOrders.forEach(element => {
+      if(element._ID === id) {
+        return element;
+      }
+    })
+    return null;
+  }
+
+  getTestOrdersByProductId(id: number): orders[] {
+    let tempOrders: orders[];
+    this.testOrders.forEach(element => {
+      if(element.productID === id) {
+        tempOrders.push(element);
+      }
+    })
+    return tempOrders;
+  }
+
+  addToTestOrders(userID: number, product: product, amount: number): void {
+    let newOrder: orders;
+
+    newOrder._ID = this.testOrders.length+1;
+    newOrder.userID = userID;
+    newOrder.productID = product.Id;
+    newOrder.price = product.Price;
+    newOrder.amount = amount;
+    newOrder.localFilter = "TEAMNICE";
+
+    this.testOrders.push(newOrder);
+  }
+
+  addProductToCart(product: product, amount: number): void {
+    let newCartOrder: cart = new cart;
+
+    newCartOrder.ID = this.cartProducts.length;
+    //vi får stadig ikke amount som et tal
+
+    newCartOrder.amount = amount;
+    newCartOrder.totalPrice = product.Price * amount;
+    newCartOrder.localFilter = "TEAMNICE";
+
+    this.cartProducts.push(newCartOrder);
+  }
+
+  getCartAmount(): number{
+    let amountTotal: number = 0;
+
+    this.cartProducts.forEach(element => {
+      amountTotal += element.totalPrice;
+    });
+    return amountTotal;
+  }
+
+  getCartAmountOfProducts(): number{
+    let amountOfItems: number = 0;
+    this.cartProducts.forEach(hans => {
+      amountOfItems += hans.amount;
+    });
+    return amountOfItems;
+  }
+
+  getProductsInCart(): product[] {
+    let cartProducts: product[];
+    /*
+    this.products.forEach(elementProduct => {
+      this.cartProducts.forEach(elementCart => {
+        if(elementCart.productID === elementProduct.Id) {
+          cartProducts.push(elementProduct);
+        }
+      })
+    })*/
+
+    this.cartProducts.forEach(element => {
+      cartProducts.push(this.getProductTestId(element.productID));
+    })
+
+    return cartProducts;
+  }
+
+  addCartProductsToOrder(): void {
+    this.cartProducts.forEach(element => {
+      this.addToTestOrders(+this.auth.LoggedinUser._id, this.getProductTestId(element.ID), element.amount);
+    })
+  }
+
+
+  
   getUsers() {
 
     return this.testUsers;
@@ -134,8 +286,9 @@ export class DataService {
   addUser(user: User) {
     this.testUsers.push(user);
   }
+  
+  constructor(private api: ApiService, private auth: AuthService) { }
 
-  constructor(private api: ApiService) { }
 
     /*
    public getUsers(){
@@ -160,9 +313,9 @@ export class DataService {
   //   this.api.GetAllOrders().subscribe(res =>{this.orders = res;});
   // }
 
-  // public addProduct(product: product): void{
-  //   console.log(product.Name);
-  //   //this.api.PostProduct(product).subscribe(product => this.products.push(product));
-  //   this.api.CreateProduct(product);
-  // }
+  public addProduct(product: product): void{
+    console.log(product.Name);
+    this.api.PostProduct(product).subscribe(product => this.products.push(product));
+    //this.api.CreateProduct(product);
+  }
 }

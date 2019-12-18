@@ -78,15 +78,12 @@ export class ApiService {
 
     const Url = 'http://localhost:53521/api/products';
 
-    const body = JSON.stringify({
+    const body = JSON.stringify(
       product
-    });
+    );
 
-    const headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8', 'Accept' : 'application/json'});
-    headers.append('Access-Control-Allow-Origin', '*');
-    headers.append('Access-Control-Allow-Methods', 'POST');
-    headers.append('Access-Control-Allow-Headers', 'origin, content-type, accept, x-requested-with');
-    headers.append('Access-Control-Max-Age', '3600');
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+
 
 
     console.log(body);
@@ -95,7 +92,7 @@ export class ApiService {
 
 
 
-    return this.http.put(Url, body).subscribe(res => {
+    return this.http.post(Url, body).subscribe(res => {
       console.log(res);
   });
 
@@ -132,7 +129,7 @@ export class ApiService {
     };
     console.log(product.Name);
     console.log("FØR PIPE FÆTTER");
-    return this.http.post<product>('http://localhost:53521/api/products', product, httpOptions).pipe();
+    return this.http.post<product>('http://localhost:53521/api/products', JSON.stringify(product), httpOptions).pipe();
 
 
 
