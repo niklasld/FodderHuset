@@ -86,4 +86,45 @@ describe('Login html tests om den virker', () => {
         browser.sleep(3000);
         // expect(true).toBeTruthy();
     });
+
+    it('1.5 = should login as admin', ()=> {
+
+        element(by.id('login-page')).click();
+        element(by.id('email-input')).sendKeys("admin@gmail.dk");
+        element(by.id('password-input')).sendKeys('123');
+        element(by.id('login-botton')).click();
+        let p = element(by.id('adminP')).getText();
+
+        expect(p).toEqual('admin-portal works!');
+
+    });
+
+    it('1,6 = should test if we can make a new product', ()=> {
+
+
+
+        element(by.id('add-product')).click();
+        element(by.id('add-name')).sendKeys('Test Product');
+        element(by.id('add-price')).sendKeys('1');
+        element(by.id('add-weight')).sendKeys('1');
+        element(by.id('add-animal')).sendKeys('1');
+        element(by.id('add-btn')).click();
+
+
+        //vi bliver automatisk redirected til viewproducts
+        // vi skal tælle products, vi vil gerne ha 10
+        element.all(by.css('.example-card')).then((ele) => {
+
+          const after = ele.length;
+
+          expect(after).toBe(10);
+
+
+        });
+
+    });
+
+
+
+
 });

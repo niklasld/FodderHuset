@@ -12,6 +12,6 @@ export class FilterProduct implements PipeTransform {
         }
 
         search = search.toLowerCase();
-        return products.filter(product => product.Name && product.Name.toLowerCase().includes(search) );
+        return products.filter(product => product.Name && product.Name.toLowerCase().includes(search) || product.foodFor && product.foodFor.toLowerCase().includes(search));
     }
 }

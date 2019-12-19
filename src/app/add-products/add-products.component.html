@@ -4,7 +4,7 @@
 <form [formGroup]="addProductForm" class="example-form" (ngSubmit)="onAddProductsSubmit()">
 
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Name of product" id = "add-products-Name"formControlName="Name">
+          <input matInput placeholder="Name of product" id = "add-name"formControlName="Name">
 
           <mat-error>
             Enter the name of the product you want to add
@@ -13,7 +13,7 @@
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-            <input matInput placeholder= "Animal"  type ="number" id = "add-products-Animal" formControlName="Animal">
+            <input matInput placeholder= "Animal"  type ="number" id = "add-animal" formControlName="Animal">
 
             <mat-error>
                     Please enter the Animal that eats this food
@@ -22,7 +22,7 @@
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-                <input matInput placeholder= "Price" type="number" id = "add-products-price" formControlName="Price">
+                <input matInput placeholder= "Price" type="number" id = "add-price" formControlName="Price">
 
                 <mat-error>
                         Please enter the Price of this product
@@ -32,7 +32,7 @@
 
         <mat-form-field>
 
-                <input matInput placeholder= "Weight" type="number" id="add-product-weight" formControlName="Weight">
+                <input matInput placeholder= "Weight" type="number" id="add-weight" formControlName="Weight">
 
             <mat-error>
                 please enter the weight of this product
@@ -41,6 +41,6 @@
         </mat-form-field>
 
 
-        <button mat-raised-button color="primary" id="Add-products-submitBotton">Add Product</button>
+        <button mat-raised-button color="primary" id="add-btn">Add Product</button>
 
       </form>
