@@ -97,18 +97,30 @@ describe('Login html tests om den virker', () => {
 
         expect(p).toEqual('admin-portal works!');
 
-    });
-
+    })
     it('1,6 = should test if we can make a new product', ()=> {
 
+        const before = 0;
+        //count products before
+        element(by.id('view-products')).click();
+        element.all(by.css('.example-card')).then((prevElements) => {
+            this.before = prevElements.length;
+        });
 
+        //login
+        element(by.id('login-page')).click();
+        element(by.id('email-input')).sendKeys("admin@gmail.dk");
+        element(by.id('password-input')).sendKeys('123');
+        element(by.id('login-botton')).click();
 
+        //add-product
         element(by.id('add-product')).click();
         element(by.id('add-name')).sendKeys('Test Product');
         element(by.id('add-price')).sendKeys('1');
         element(by.id('add-weight')).sendKeys('1');
         element(by.id('add-animal')).sendKeys('1');
         element(by.id('add-btn')).click();
+        
 
 
         //vi bliver automatisk redirected til viewproducts
@@ -117,7 +129,7 @@ describe('Login html tests om den virker', () => {
 
           const after = ele.length;
 
-          expect(after).toBe(10);
+          expect(after).toBe(this.before+1);
 
 
         });
